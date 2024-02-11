@@ -43,8 +43,16 @@ class SudokuSolve:
         return False
 
     def print_grid(self):
-        for row in range(9):
-            print(self.grid[row])
+        for i in range(len(self.grid)):
+            if i % 3 == 0 and i != 0:
+                print("- - - - - - - - - - - -")
+            for j in range(len(self.grid[0])):
+                if j % 3 == 0 and j != 0:
+                    print(" | ", end="")
+                if j == 8:
+                    print(self.grid[i][j])
+                else:
+                    print(str(self.grid[i][j]) + " ", end="")
 
     def check_full(self):
         for i in range(len(self.grid)):
@@ -52,20 +60,26 @@ class SudokuSolve:
                 if self.grid[i][j] == 0:
                     return True
         return False
-
+    def all(self):
+        if not (self.check_row(i+1, row) and self.check_col(i+1, col) and self.check_around(row, col, i+1)):
+            return True
     def check(self):
         if self.grid == self.check_grid:
             return True
         return False
 
+
+
     def main(self):
-        print(self.num)
+        #    print(self.num)
         self.print_grid()
         for row in range(len(self.grid)):
             for col in range(len(self.grid[row])):
                 for i in range(9):
-                    if not (self.check_row(i+1, row) and self.check_col(i+1, col) and self.check_around(row, col, i+1)):
-                        self.grid[row][col] = i
+                    if (all):
+                        self.grid[row][col] =1 
+                    else:
+                        
 
         if (self.check_full() and self.num < 100):
             print("--------------------------------------------------------")
@@ -76,9 +90,6 @@ class SudokuSolve:
                 print("There is no difference")
             self.main()
 
-
-
-print(sudoku_puzzle)
 
 Solve = SudokuSolve(sudoku_puzzle)
 Solve.main()

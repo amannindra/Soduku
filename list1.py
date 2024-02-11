@@ -19,7 +19,7 @@ def check_column(number, column):
             print("It is in Column")
 
 
-check_row(5,0)
+#check_row(5,0)
 
 
 
